@@ -1,0 +1,196 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
+html {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background-color: var(--main-color);  
+  font-family: 'Open Sans', Arial, sans-serif;  
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  line-height: 1;
+}
+
+.fix {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+  
+button, input {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, p, ul, ol {
+  padding: 0;
+  margin: 0;
+}
+
+:focus {
+  outline: none;
+}
+
+/* container */
+
+.container {
+  max-width: 1700px;   
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 50px;  
+}
+
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important; 
+  width: 1px !important; 
+  clip: rect(0, 0, 0, 0);  
+  overflow: hidden;
+}
+
+/* при работе с float */
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header-title {
+  margin-bottom: 50px;
+}
+
+.pages {
+  margin-bottom: 40px;
+}
+
+.comments-list__title,
+.page-number,
+.item-body,
+.item-title,
+.comment-title  {
+  margin-bottom: 18px;
+}
+
+.page {
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  background-color: rgb(81, 8, 250);
+  color: #fff;
+  border-radius: 120px;
+  border: 3px solid grey;
+  transition: all .2s ease-in-out;
+}
+
+.page:hover {
+  background-color: rgb(83, 235, 235);
+  border: 3px solid black;
+  color: black;
+}
+
+.page:active {
+  background-color: rgb(10, 241, 126);
+  color: black;
+}
+
+.return {
+  margin-bottom: 90px;
+}
+
+.return,
+.first-page,
+.last-page {
+  width: 45px;
+  height: 45px;
+  border-radius: 60px;
+  cursor: pointer;
+  border: 2px solid black;
+  color: #fff;
+  background-color: rgb(138, 96, 96);
+  transition: all .2s ease-in-out;
+}
+
+.return:hover,
+.first-page:hover,
+.last-page:hover {
+  background-color: orangered;
+  color: black;
+}
+
+.return:active,
+.first-page:active,
+.last-page:active {
+  background-color: rgb(81, 8, 250);
+  color: rgb(138, 96, 96);
+}
+
+.news-item,
+.item-post {
+  padding-top: 5px;
+  padding-left: 5px;
+  background-color: cadetblue;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: lightblue;
+  color: gray;
+}
+
+button:disabled:hover {
+  background-color: gainsboro;
+}
+
+
+
+@media (max-width: 1024px) {
+  .container {
+    max-width: 1024px;   
+    margin: 0 auto;
+    padding: 0 50px;  
+  }  
+}
+
+@media (max-width: 740px) {
+  .container {
+    max-width: 740px;   
+    margin: 0 auto;
+    padding: 0 15px;  
+  }
+}
