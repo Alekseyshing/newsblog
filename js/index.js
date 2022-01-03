@@ -13,17 +13,43 @@ window.addEventListener('DOMContentLoaded', function () {
   const prev = document.querySelector('.prev');
   const pagesBtn = document.querySelectorAll('.page');
   const pageNumber = document.querySelector('.page-number');
+  let pageNav;
+
+  if (location.search.substring(location.search.length = 7)) {
+    pageNav = location.search.substring(location.search.length - 2);
+  } else {
+    pageNav = location.search.substring(location.search.length - 1);
+  }
+
+  if (pageNumber) {
+    if(!pageNav){
+      pageNumber.innerHTML = `Страница: 1`;
+    } else {
+      pageNumber.innerHTML = `Страница: ${pageNav}`;
+    }
+  }
+  requestNews(url + location.search);
 
   if (location.search && nowUrl.includes("index.html")) {
+    pageNumber.innerHTML = `Страница: ${pageNav}`;
     requestNews(url + location.search);
-    let pageNav;
-    if (location.search.substring(location.search.length = 7)) {
-      pageNav = location.search.substring(location.search.length - 2)
-    } else {
-      pageNav = location.search.substring(location.search.length - 1)
+    function getPageNav() {
+      if (location.search.substring(location.search.length = 7)) {
+        pageNav = location.search.substring(location.search.length - 2);
+      } else {
+        pageNav = location.search.substring(location.search.length - 1);
+      }
+      if (pageNumber) {
+        pageNumber.innerHTML = `Страница: ${pageNav}`;
+      } else {
+        console.log('тут нет pagenumber');
+      }
+      requestNews(url + location.search);
+      return pageNumber
     }
-    let pageNumber = document.querySelector('.page-number');
-    pageNumber.innerText = `Страница: ${pageNav}`;
+    
+    getPageNav();
+
   } else if (nowUrl.includes("post.html")) {
     const postUrl = "https://gorest.co.in/public-api/posts/";
     const commentUrl = "https://gorest.co.in/public-api/comments?post_id=";
@@ -37,13 +63,8 @@ window.addEventListener('DOMContentLoaded', function () {
     returnBtn.addEventListener('click', () => {
       window.history.go(-1);
       requestNews(url + location.search);
-      pageNumber.innerText = `Страница: ${pageNav}`;
-      console.log('lalalal');
     });
-
   }
-
-
 
 
   //Делаем запрос на сервер, получаем овтет и заполняем сайт
@@ -144,9 +165,7 @@ window.addEventListener('DOMContentLoaded', function () {
   pagesBtn.forEach((page) =>
     page.addEventListener("click", function () {
       const number = this.textContent;
-      console.log(number);
       const nowUrl = newUrl + number;
-      console.log(nowUrl);
       pageNumber.innerText = `Страница: ${number}`;
 
       deleteNews();
@@ -187,8 +206,9 @@ window.addEventListener('DOMContentLoaded', function () {
     text.innerText = description;
 
     li.append(title, text);
-
-    ul.append(li);
+    if (ul) {
+      ul.append(li);
+    }
   }
   /////////////
 
